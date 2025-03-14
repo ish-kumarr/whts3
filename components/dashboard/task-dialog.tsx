@@ -32,7 +32,7 @@ export function TaskDialog({ task, onClose }: TaskDialogProps) {
 
   return (
     <Dialog open={!!task} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[900px] h-[85vh] p-0">
+      <DialogContent className="sm:max-w-[1200px] h-[85vh] p-0">
         <DialogHeader className="p-6 pb-2">
           <DialogTitle className="text-xl flex items-center gap-2">
             <span>Task Details</span>
@@ -42,9 +42,9 @@ export function TaskDialog({ task, onClose }: TaskDialogProps) {
           </DialogTitle>
         </DialogHeader>
         <div className="flex h-[calc(85vh-80px)] gap-6 p-6 pt-2">
-          <div className="flex-1 overflow-y-auto pr-6 space-y-6">
+          <div className="w-[70%] overflow-y-auto pr-6 space-y-6">
             <div className="space-y-2">
-              <h3 className="text-lg font-medium">{task.task}</h3>
+              <h3 className="text-2xl font-medium">{task.task}</h3>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <User className="h-4 w-4" />
                 <span>From {task.from}</span>
@@ -107,7 +107,7 @@ export function TaskDialog({ task, onClose }: TaskDialogProps) {
             </div>
           </div>
 
-          <div className="w-[400px] border-l pl-6">
+          <div className="w-[30%] border-l pl-6">
             <Tabs defaultValue="analysis" className="h-full flex flex-col">
               <TabsList className="w-full">
                 <TabsTrigger
@@ -128,16 +128,14 @@ export function TaskDialog({ task, onClose }: TaskDialogProps) {
 
               <TabsContent
                 value="analysis"
-                className="flex-1 mt-6 overflow-hidden"
+                className="flex-1 mt-6 overflow-y-auto h-[calc(85vh-200px)]"
               >
-                <ScrollArea className="h-full pr-4">
-                  <AIAnalysis task={task} />
-                </ScrollArea>
+                <AIAnalysis task={task} />
               </TabsContent>
 
               <TabsContent
                 value="chat"
-                className="flex-1 mt-6 flex flex-col overflow-hidden"
+                className="flex-1 mt-6 flex flex-col overflow-hidden h-[calc(85vh-200px)]"
               >
                 <AIChat task={task} />
               </TabsContent>
